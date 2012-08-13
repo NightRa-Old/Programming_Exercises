@@ -1,13 +1,14 @@
 // Created by Ilan Godik
 
-package Exc;
+package Exercises;
 
-import Interfaces.IExc;
+import Interfaces.IExercise;
+
 import static Main.Main.*;
 
-public class Test1 implements IExc {
+public class A2 implements IExercise {
 	public void run() {
-		pl("Test is running!");
+		pl("Running A2");
 	}
 
 	public byte getChapterNumber() {
@@ -15,10 +16,10 @@ public class Test1 implements IExc {
 	}
 
 	public byte getExerciseNumber() {
-		return 3;
+		return 4;
 	}
 
 	public String getName() {
-		return "Test";
+		return "Test A2";
 	}
 }

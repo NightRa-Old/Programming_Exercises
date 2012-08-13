@@ -2,15 +2,16 @@
 
 package Main;
 
-import Interfaces.IExc;
+import Interfaces.IExercise;
 
 import java.io.File;
 import java.net.URL;
-import java.util.ArrayList;
+import java.util.*;
 
 public class Main {
+	public static Scanner in = new Scanner(System.in);
 	public static Main instance;
-	private ArrayList<IExc> Exercises = new ArrayList<IExc>();
+	private ArrayList<IExercise> exercises = new ArrayList<IExercise>();
 
 	public static void main(String[] args) {
 		instance = new Main();
@@ -18,13 +19,27 @@ public class Main {
 
 	public Main() {
 		load();
-		sort(Exercises);
-		printMenu();
+		sort();
+		menu();
 	}
 
-	private void printMenu() {
-		for (IExc ex : Exercises) {
-
+	private void menu() {
+		pl("These are my exercises:");
+		IExercise currentExercise;
+		for (int i = 0; i < exercises.size(); i++) {
+			currentExercise = exercises.get(i);
+			pl((i + 1) + ":   " + currentExercise.getChapterNumber() + "." + currentExercise.getExerciseNumber() + ":  " + currentExercise.getName());
+		}
+		boolean validSelection = false;
+		p("Please enter your selection: ");
+		while (!validSelection) {
+			int selection = in.nextInt();
+			if (selection < exercises.size() && selection > 0) {
+				exercises.get(selection - 1).run();
+				validSelection = true;
+			} else {
+				p("Please enter a valid selection: ");
+			}
 		}
 	}
 
@@ -47,7 +62,7 @@ public class Main {
 
 				for (String s : names) {
 					try {
-						add((IExc) Class.forName("Exercises." + s).newInstance());
+						add((IExercise) Class.forName("Exercises." + s).newInstance());
 					} catch (ClassNotFoundException e) {
 						pl("Class not found.");
 					} catch (InstantiationException e) {
@@ -56,25 +71,25 @@ public class Main {
 						e.printStackTrace();
 					}
 				}
-			}else{
+			} else {
 				pl("\"files\" is null! Please add some class files for the launcher to work.");
 				System.exit(0);
 			}
-		}else{
+		} else {
 			pl("packageURL is null! Aborting!");
 			System.exit(1);
 		}
 	}
 
-	private void add(IExc exc) {
-		Exercises.add(exc);
+	private void add(IExercise exercise) {
+		exercises.add(exercise);
 	}
 
-	public void sort(ArrayList<IExc> list) {
-		ArrayList<IExc> sortedList = new ArrayList<IExc>();
-		for(IExc a: Exercises){
-
-		}
+	public void sort() {
+		TreeSet<IExercise> sortedExercises = new TreeSet<IExercise>(new ExerciseComparator());
+		sortedExercises.addAll(exercises);
+		exercises.clear();
+		exercises.addAll(sortedExercises);
 	}
 
 	public static Main getInstance() {
