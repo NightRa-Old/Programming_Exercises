@@ -3,31 +3,14 @@
 package Exercises;
 
 import Interfaces.IExercise;
+import Util.MatrixHelper;
 
 import static Util.Util.*;
 
 public class SumMatrix implements IExercise {
 	public void run() {
-		p("Please enter the size of the matrix. \n The template is: a*b\n");
-		String matrixSize = in.next();
-		int rows;
-		int columns;
-		try {
-			rows = Integer.parseInt(matrixSize.substring(0, matrixSize.indexOf('*')));
-			columns = Integer.parseInt(matrixSize.substring(matrixSize.indexOf('*') + 1, matrixSize.length()));
-			pl("Please enter the " + (rows * columns) + " elements:");
-			int[][] matrix = new int[rows][columns];
-			for (int i = 0; i < rows; i++) {
-				for (int j = 0; j < columns; j++) {
-					matrix[i][j] = in.nextInt();
-				}
-			}
-			pl("The sum of the matrix is: " + sumMatrix(matrix));
-		} catch (Exception e) {
-			pl("Invalid template!\n");
-			if (debugMode) e.printStackTrace();
-			run();
-		}
+		int[][] matrix = MatrixHelper.getCustomMatrixFromUser();
+		pl("The sum of the matrix is: " + sumMatrix(matrix));
 	}
 
 	public static int sumMatrix(int[][] m) {
