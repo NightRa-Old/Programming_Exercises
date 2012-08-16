@@ -1,6 +1,6 @@
 // Created by Ilan Godik
 
-package Main;
+package Util;
 
 import Interfaces.IExercise;
 

@@ -3,14 +3,16 @@
 package Main;
 
 import Interfaces.IExercise;
+import Util.ExerciseComparator;
+
+import static Util.Util.*;
 
 import java.io.File;
 import java.net.URL;
 import java.util.*;
 
 public class Main {
-	public static Scanner in = new Scanner(System.in);
-	public static Main instance;
+	private static Main instance;
 	private ArrayList<IExercise> exercises = new ArrayList<IExercise>();
 
 	public static void main(String[] args) {
@@ -34,7 +36,8 @@ public class Main {
 		p("Please enter your selection: ");
 		while (!validSelection) {
 			int selection = in.nextInt();
-			if (selection < exercises.size() && selection > 0) {
+			if (selection <= exercises.size() && selection > 0) {
+				pl("");
 				exercises.get(selection - 1).run();
 				validSelection = true;
 			} else {
@@ -96,11 +99,5 @@ public class Main {
 		return instance;
 	}
 
-	public static void pl(String s) {
-		System.out.println(s);
-	}
 
-	public static void p(String s) {
-		System.out.print(s);
-	}
 }
