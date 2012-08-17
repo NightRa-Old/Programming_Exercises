@@ -5,21 +5,25 @@ package Main;
 import Interfaces.IExercise;
 import Util.ExerciseComparator;
 
-import static Util.Util.*;
-
 import java.io.File;
 import java.net.URL;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.TreeSet;
+
+import static Util.Util.*;
 
 public class Main {
 	private static Main instance;
 	private ArrayList<IExercise> exercises = new ArrayList<IExercise>();
+	private HashSet<String> ignore = new HashSet<String>();
 
 	public static void main(String[] args) {
 		instance = new Main();
 	}
 
 	public Main() {
+		addToIgnoreList("Classes");
 		load();
 		sort();
 		menu();
@@ -59,8 +63,10 @@ public class Main {
 			if (files != null) {
 				for (File actual : files) {
 					entryName = actual.getName();
-					entryName = entryName.substring(0, entryName.lastIndexOf('.'));
-					names.add(entryName);
+					if (!ignore.contains(entryName)) {
+						entryName = entryName.substring(0, entryName.lastIndexOf('.'));
+						names.add(entryName);
+					}
 				}
 
 				for (String s : names) {
@@ -84,6 +90,10 @@ public class Main {
 		}
 	}
 
+	public void addToIgnoreList(String s) {
+		ignore.add(s);
+	}
+
 	private void add(IExercise exercise) {
 		exercises.add(exercise);
 	}
@@ -98,6 +108,5 @@ public class Main {
 	public static Main getInstance() {
 		return instance;
 	}
-
 
 }
