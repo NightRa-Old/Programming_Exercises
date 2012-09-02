@@ -15,4 +15,8 @@ public class Util {
 	public static void p(String s) {
 		System.out.print(s);
 	}
+
+	public static double shortenDouble(double d, int afterPoint) {
+		return (int) (d * Math.pow(10, afterPoint)) / Math.pow(10, afterPoint);
+	}
 }
