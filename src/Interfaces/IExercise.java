@@ -1,6 +1,7 @@
 package Interfaces;
 
-public interface IExercise {
+public interface IExercise
+{
 	public void run();
 
 	public byte getChapterNumber();
