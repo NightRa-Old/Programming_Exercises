@@ -26,7 +26,6 @@ public class Main
 
 	public Main()
 	{
-		addToIgnoreList("Classes");
 		load();
 		sort();
 		menu();
@@ -75,7 +74,7 @@ public class Main
 				for (File actual : files)
 				{
 					entryName = actual.getName();
-					if (!ignore.contains(entryName))
+					if (!ignore.contains(entryName) && !actual.isDirectory())
 					{
 						entryName = entryName.substring(0, entryName.lastIndexOf('.'));
 						names.add(entryName);
