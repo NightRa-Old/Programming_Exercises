@@ -2,51 +2,42 @@
 
 package Exercises.Classes;
 
-public class Stock
-{
+public class Stock {
 	private String symbol;
 	private String name;
 	private double previousClosingPrice;
 	private double currentPrice;
 
-	public Stock(String symbol, String name)
-	{
+	public Stock(String symbol, String name) {
 		this.symbol = symbol;
 		this.name = name;
 	}
 
-	public double getChangePercent()
-	{
+	public double getChangePercent() {
 		return (previousClosingPrice / currentPrice) * 100;
 	}
 
-	public double getPreviousClosingPrice()
-	{
+	public double getPreviousClosingPrice() {
 		return previousClosingPrice;
 	}
 
-	public double getCurrentPrice()
-	{
+	public double getCurrentPrice() {
 		return currentPrice;
 	}
 
-	public void setPreviousClosingPrice(double previousClosingPrice)
-	{
+	public void setPreviousClosingPrice(double previousClosingPrice) {
 		this.previousClosingPrice = previousClosingPrice;
 	}
 
-	public void setCurrentPrice(double currentPrice)
-	{
+	public void setCurrentPrice(double currentPrice) {
 		this.currentPrice = currentPrice;
 	}
 
-	public String getSymbol()
-	{
+	public String getSymbol() {
 		return symbol;
 	}
 
-	public String getName()
-	{
+	public String getName() {
 		return name;
 	}
 }

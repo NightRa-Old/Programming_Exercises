@@ -8,28 +8,23 @@ import Interfaces.IExercise;
 import static Util.Util.pl;
 import static Util.Util.shortenDouble;
 
-public class StockTest implements IExercise
-{
-	public void run()
-	{
+public class StockTest implements IExercise {
+	public void run() {
 		Stock sun = new Stock("JAVA", "Sun Micro systems Inc");
 		sun.setCurrentPrice(4.35);
 		sun.setPreviousClosingPrice(4.5);
 		pl("The price percentage change of " + sun.getName() + " is: " + shortenDouble(sun.getChangePercent(), 3) + ".");
 	}
 
-	public byte getChapterNumber()
-	{
+	public byte getChapterNumber() {
 		return 8;
 	}
 
-	public byte getExerciseNumber()
-	{
+	public byte getExerciseNumber() {
 		return 2;
 	}
 
-	public String getName()
-	{
+	public String getName() {
 		return "Stock class test";
 	}
 }

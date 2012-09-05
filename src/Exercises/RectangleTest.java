@@ -7,10 +7,8 @@ import Interfaces.IExercise;
 
 import static Util.Util.*;
 
-public class RectangleTest implements IExercise
-{
-	public void run()
-	{
+public class RectangleTest implements IExercise {
+	public void run() {
 		p("Please enter the width: ");
 		double width = in.nextDouble();
 		p("Please enter the height: ");
@@ -20,18 +18,15 @@ public class RectangleTest implements IExercise
 		pl("The area is: " + rectangle.getArea());
 	}
 
-	public byte getChapterNumber()
-	{
+	public byte getChapterNumber() {
 		return 8;
 	}
 
-	public byte getExerciseNumber()
-	{
+	public byte getExerciseNumber() {
 		return 1;
 	}
 
-	public String getName()
-	{
+	public String getName() {
 		return "The Rectangle Class";
 	}
 }
