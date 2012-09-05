@@ -65,7 +65,7 @@ public class Main
 		URL packageURL = classLoader.getResource(packageName);
 		if (packageURL != null)
 		{
-			File folder = new File(packageURL.getFile());
+			File folder = new File(packageURL.getFile().replaceAll("%20", " "));
 			File[] files = folder.listFiles();
 			String entryName;
 
